@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kylmeny Poster</title>
+  <style>
+    :root {
+      --wood-a: #e2c9a7;
+      --wood-b: #d7ba92;
+      --poster: #f2a04f;
+      --poster-dark: #e18e3d;
+      --ink: #2a2018;
+      --card: #f8d7af;
+      --line: #d17b2e;
+      --price: #114a58;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,0.22) 0%, transparent 22%),
+        radial-gradient(circle at 84% 18%, rgba(255,255,255,0.18) 0%, transparent 21%),
+        repeating-linear-gradient(90deg, var(--wood-a) 0px, var(--wood-a) 20px, var(--wood-b) 20px, var(--wood-b) 40px);
+    }
+
+    .frame {
+      width: 720px;
+      height: 1280px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      transform: scale(min(calc(100vw / 720), calc(100vh / 1280)));
+      transform-origin: center center;
+    }
+    .poster {
+      width: 610px;
+      height: 1170px;
+      background: linear-gradient(180deg, var(--poster) 0%, var(--poster-dark) 100%);
+      border: 3px solid #cf7a2f;
+      box-shadow: 0 14px 28px rgba(65, 38, 11, 0.24);
+      padding: 10px;
+      display: grid;
+      grid-template-rows: 178px 1fr;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .top {
+      background: #f6b065;
+      border: 2px solid #cf7a2f;
+      padding: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ribbon {
+      position: absolute;
+      left: 10px;
+      top: 8px;
+      background: #ffdcb8;
+      border: 2px solid #8f4a24;
+      padding: 4px 8px;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 0.95;
+      transform: rotate(-7deg);
+      text-transform: uppercase;
+      color: #7a3215;
+    }
+
+    .menu-word {
+      position: absolute;
+      left: 28px;
+      top: 106px;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .truck {
+      position: absolute;
+      right: 10px;
+      top: 16px;
+      width: 312px;
+      height: 118px;
+      border: 3px solid #3f2720;
+      background: linear-gradient(180deg, #ec5e3f 0%, #d5482c 100%);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .truck::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 24px;
+      width: 68px;
+      height: 46px;
+      background: #ffd7b2;
+      border: 3px solid #3f2720;
+      transform: skewX(-16deg);
+    }
+
+    .truck::after {
+      content: "";
+      position: absolute;
+      left: 92px;
+      top: 30px;
+      width: 190px;
+      height: 38px;
+      background: repeating-linear-gradient(90deg, #ffe5b8 0px, #ffe5b8 20px, #ef7d40 20px, #ef7d40 40px);
+      border: 3px solid #3f2720;
+      border-radius: 6px;
+    }
+
+    .truck-wheels {
+      position: absolute;
+      right: 20px;
+      bottom: 6px;
+      display: flex;
+      gap: 168px;
+    }
+
+    .wheel {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #261f1d;
+      border: 3px solid #141010;
+      box-shadow: inset 0 0 0 6px #8a8a8a;
+    }
+
+    .body {
+      display: grid;
+      grid-template-columns: 208px 1fr;
+      gap: 8px;
+      min-height: 0;
+    }
+
+    .left, .right {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      min-height: 0;
+    }
+
+    .badge {
+      background: #ffd24e;
+      border: 2px solid #5f4117;
+      clip-path: polygon(50% 0%, 60% 10%, 74% 4%, 78% 18%, 92% 18%, 88% 32%, 100% 40%, 88% 48%, 92% 62%, 78% 62%, 74% 76%, 60% 70%, 50% 80%, 40% 70%, 26% 76%, 22% 62%, 8% 62%, 12% 48%, 0% 40%, 12% 32%, 8% 18%, 22% 18%, 26% 4%, 40% 10%);
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.02;
+      font-size: 16px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 2px solid var(--line);
+      padding: 6px 7px 5px;
+      min-height: 60px;
+    }
+
+    .label {
+      display: inline-block;
+      background: #ef8757;
+      border: 2px solid #7b3a25;
+      padding: 2px 7px;
+      margin-bottom: 5px;
+      transform: skewX(-13deg);
+      font-size: 15px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    .label span { display: inline-block; transform: skewX(13deg); }
+
+    .price {
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--price);
+      margin-left: 4px;
+      white-space: nowrap;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 1px;
+    }
+
+    li {
+      font-size: 12px;
+      line-height: 1.16;
+      font-weight: 800;
+      border-bottom: 1px dashed #e5b27d;
+      padding-bottom: 1px;
+      word-break: break-word;
+    }
+
+    li:last-child { border-bottom: 0; }
+
+    .left li { font-size: 11px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      min-height: 0;
+    }
+  </style>
+</head>
+<body>`n  <div class="frame">
+    <main class="poster">
+      <section class="top">
+        <div class="ribbon">Kyl<br/>Meny</div>
+        <div class="menu-word">- MENU -</div>
+        <div class="truck">
+          <div class="truck-wheels"><div class="wheel"></div><div class="wheel"></div></div>
+        </div>
+      </section>
+
+      <section class="body">
+        <div class="left">
+          <div class="badge">DAGENS<br/>KYL<br/>SORTIMENT</div>
+
+          <article class="panel">
+            <div class="label"><span>Dryck</span></div><span class="price">15 kr</span>
+            <ul>
+              <li>Coca-Cola Zero</li>
+              <li>Pepsi 33cl</li>
+              <li>Pepsi Max</li>
+              <li>Trocadero</li>
+              <li>Fanta Orange</li>
+              <li>Bonaqua Paron 50cl</li>
+              <li>Bonaqua Citron &amp; Lime 50cl</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="right">
+          <article class="panel">
+            <div class="label"><span>Energidryck</span></div><span class="price">25 kr</span>
+            <ul>
+              <li>Red Bull</li>
+              <li>Monster</li>
+              <li>Celsius</li>
+              <li>Nocco</li>
+            </ul>
+          </article>
+
+          <div class="split">
+            <article class="panel">
+              <div class="label"><span>Snacks</span></div><span class="price">20 kr</span>
+              <ul>
+                <li>Delicatoboll</li>
+                <li>Punchrulle</li>
+                <li>Pringles Sour Cream &amp; Onion</li>
+                <li>Pringles Original</li>
+                <li>Svenska Lantchips Saltade</li>
+              </ul>
+            </article>
+
+            <article class="panel">
+              <div class="label"><span>Nudlar</span></div><span class="price">25 kr</span>
+              <ul>
+                <li>Nongshim Shin Ramyun</li>
+                <li>Nongshim Kimchi</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="panel">
+            <div class="label"><span>Choklad &amp; Bars</span></div><span class="price">20 kr</span>
+            <ul>
+              <li>Kexchoklad</li>
+              <li>Sportlunch Dubbel</li>
+              <li>Proteinbar Choklad</li>
+              <li>Proteinbar Toffee Caramel</li>
+              <li>Corny BIG</li>
+              <li>Flapjack</li>
+            </ul>
+          </article>
+
+          <div class="split">
+            <article class="panel">
+              <div class="label"><span>Kylda Mellanmal</span></div>
+              <ul>
+                <li>Risifrutti <span class="price">20 kr</span></li>
+                <li>Proteinpudding <span class="price">20 kr</span></li>
+                <li>Kvarg Naturell 500g <span class="price">35 kr</span></li>
+                <li>Kvarg Hallon 500g <span class="price">35 kr</span></li>
+              </ul>
+            </article>
+
+            <article class="panel">
+              <div class="label"><span>Kaffe / Frys</span></div>
+              <ul>
+                <li>Lofbergs Ice Cappuccino <span class="price">35 kr</span></li>
+                <li>Lofbergs Ice Espresso + Milk <span class="price">35 kr</span></li>
+                <li>Billys Pan Pizza Original <span class="price">25 kr</span></li>
+                <li>Billys Pan Pizza Veggie <span class="price">25 kr</span></li>
+                <li>Billys Pan Pizza Hawaii <span class="price">25 kr</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
+
+
